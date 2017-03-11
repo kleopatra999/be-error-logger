@@ -2,10 +2,6 @@
 
 This Browser / Node.js library is a helper for logging errors in the Be format.
 
-## Format
-
-`[2000-02-01 00:00:00] CHANNEL='my_channel' LEVEL='INFO' APP_NAME='App' MESSAGE='Hello' PID='3421' OPTIONAL_KEY1='v1' OPTIONAL_KEY2='v2'\n`
-
 
 ## Usage
 
@@ -21,12 +17,16 @@ Then, in many other places within the application:
 ```js
 const loggers = require('./core/loggers');
 
-const logger = loggers.get('semantic_name_of_file');
+const logger = loggers.get('name_of_file');
 
 // ...
 
-logger.info('stats_channel', 'some description', { time_in_ms: 34 });
+logger.info('stats_channel', 'some_description', { time_in_ms: 34 });
 ```
+
+Output to `stdout`:
+
+`[2017-02-01 23:13:10] CHANNEL='stats_channel' LEVEL='INFO' APP_NAME='My Application' MESSAGE='name_of_file:some_description' PID='3421' TIME_IN_MS='34'\n`
 
 
 ## Logger
